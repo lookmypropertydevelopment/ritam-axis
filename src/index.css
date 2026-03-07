@@ -1,0 +1,126 @@
+/* Base reset — all styling is handled by inline React styles in App.jsx */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* =========================================================================
+   Global Responsive Styles 
+   ========================================================================= */
+
+@media (max-width: 1024px) {
+  /* Navigation */
+  nav > div {
+    padding: 0 20px !important;
+  }
+  ul[style*="gap: 40px"] {
+    gap: 20px !important;
+  }
+
+  /* Grid Layouts to 2 Columns */
+  div[style*="grid-template-columns: repeat(4"],
+  div[style*="gridTemplateColumns: 'repeat(4"],
+  div[style*="grid-template-columns: repeat(3"],
+  div[style*="gridTemplateColumns: 'repeat(3"] {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  
+  /* Hero Section Fonts */
+  h1[style*="clamp(44px"] {
+    font-size: clamp(36px, 6vw, 54px) !important;
+  }
+}
+
+@media (max-width: 768px) {
+  /* General Sections */
+  section, div[style*="padding: 120px 40px"] {
+    padding: 60px 20px !important;
+  }
+  
+  /* Navigation */
+  ul[style*="gap: 40px"], ul[style*="gap: 20px"] {
+    display: none !important; /* In a real app, replace with a hamburger menu */
+  }
+  button[style*="navCta"] {
+    display: none !important;
+  }
+
+  /* Hero Content */
+  div[style*="heroSlideContent"] {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+    text-align: center !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  div[style*="heroSlideContent"] > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  div[style*="sliderDots"] {
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    bottom: 20px !important;
+  }
+  
+  /* All Grids to 1 Column */
+  div[style*="grid"] {
+    grid-template-columns: 1fr !important;
+  }
+  
+  /* Story/Split Sections */
+  div[style*="storyGrid"],
+  div[style*="whySplit"] {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 40px !important;
+  }
+  div[style*="whyLeft"] {
+    position: relative !important;
+    top: 0 !important;
+  }
+  
+  /* Footer */
+  div[style*="footerGrid"] {
+    gap: 40px !important;
+  }
+  div[style*="footerBottom"] {
+    flex-direction: column !important;
+    gap: 20px !important;
+    text-align: center !important;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Typography Adjustments for Mobile */
+  h2[style*="clamp(36px"] {
+    font-size: 32px !important;
+    margin-bottom: 32px !important;
+  }
+  div[style*="sectionHeader"] {
+    margin-bottom: 32px !important;
+  }
+  
+  /* Stats Bar */
+  div[style*="statNum"] {
+    font-size: 40px !important;
+  }
+  div[style*="statSup"] {
+    font-size: 20px !important;
+  }
+  
+  /* Process / Services padding */
+  div[style*="processCard"], div[style*="serviceCard"], div[style*="featureCard"] {
+    padding: 30px 20px !important;
+    flex-direction: column !important;
+    gap: 20px !important;
+  }
+}
