@@ -92,7 +92,7 @@ export default function Contact() {
                                 <span style={s.infoIcon}>📞</span>
                                 <div>
                                     <p style={s.infoTitle}>Phone</p>
-                                    <p style={s.infoText}>+91 98765 43210</p>
+                                    <p style={s.infoText}><a href="tel:+919876543210" style={{ color: 'inherit', textDecoration: 'none' }}>+91 98765 43210</a></p>
                                 </div>
                             </div>
                             <div style={s.infoItem}>
@@ -159,10 +159,15 @@ export default function Contact() {
                                         onChange={e => setForm({ ...form, service: e.target.value })}
                                         onFocus={() => setFocused('service')} onBlur={() => setFocused(null)}>
                                         <option value="">Select a service...</option>
-                                        <option>Living Spaces</option>
-                                        <option>Culinary Havens</option>
-                                        <option>Private Retreats</option>
-                                        <option>Turnkey Solution</option>
+                                        <option>Space planning & interior design</option>
+                                        <option>Modular kitchen & wardrobe solutions</option>
+                                        <option>Custom furniture & carpentry work</option>
+                                        <option>Electrical & lighting execution</option>
+                                        <option>False ceiling & wall treatments</option>
+                                        <option>Flooring & civil modifications</option>
+                                        <option>Painting, finishes & textures</option>
+                                        <option>Material sourcing & quality checks</option>
+                                        <option>Complete project execution & handover</option>
                                         <option>Other</option>
                                     </select>
                                 </div>

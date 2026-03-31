@@ -26,31 +26,66 @@ function Reveal({ children, direction = 'up', delay = 0, style = {} }) {
 const SERVICES = [
     {
         num: '01',
-        title: 'Living Spaces',
-        desc: 'Premium lounges, family rooms, and foyer designs crafted to carefully mirror your lifestyle and impress your guests.',
+        title: 'Space planning & interior design',
+        desc: 'Optimizing spatial flow and aesthetic harmony to create functional yet stunning residential environments.',
         img: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=85',
-        bullets: ['Custom Furniture Design', 'Lighting Curation', 'Art & Decor Placement']
+        bullets: ['Spatial Flow Analysis', 'Conceptual Moodboards', 'Furniture Layout Planning']
     },
     {
         num: '02',
-        title: 'Culinary Havens',
-        desc: 'High-end modular kitchens where smart ergonomics naturally meet sleek, timeless aesthetics.',
+        title: 'Modular kitchen & wardrobe solutions',
+        desc: 'High-end modular systems that combine ergonomic efficiency with sleek, contemporary design.',
         img: 'https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=1200&q=85',
-        bullets: ['Premium Countertops', 'Smart Storage Solutions', 'High-End Appliances Integration']
+        bullets: ['Ergonomic Kitchen Design', 'Bespoke Wardrobes', 'Smart Storage Systems']
     },
     {
         num: '03',
-        title: 'Private Retreats',
-        desc: 'Luxurious master suites, opulent walk-in closets, and spa-inspired bathrooms for ultimate relaxation.',
+        title: 'Custom furniture & carpentry work',
+        desc: 'Bespoke furniture pieces handcrafted to your exact specifications and lifestyle needs.',
         img: 'https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=1200&q=85',
-        bullets: ['Bespoke Wardrobes', 'Ambient Lighting', 'Textural Depth & Comfort']
+        bullets: ['Handcrafted Furniture', 'Premium Woodwork', 'Unique Design Pieces']
     },
     {
         num: '04',
-        title: 'Turnkey Solution',
-        desc: 'End-to-end interior architecture from conceptualization to execution, ensuring a completely seamless handover.',
+        title: 'Electrical & lighting execution',
+        desc: 'Strategic lighting design and precise electrical execution to enhance the mood and functionality of every room.',
+        img: 'https://images.unsplash.com/photo-1565814329452-e1efa11c5b89?auto=format&fit=crop&w=1200&q=85',
+        bullets: ['Ambient Lighting Design', 'Smart Home Integration', 'Electrical Safety Standards']
+    },
+    {
+        num: '05',
+        title: 'False ceiling & wall treatments',
+        desc: 'Elevating interiors with sophisticated ceiling designs and bespoke wall finishes that add depth and character.',
+        img: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1200&q=85',
+        bullets: ['Designer False Ceilings', 'Textured Wall Finishes', 'Acoustic Panel Integration']
+    },
+    {
+        num: '06',
+        title: 'Flooring & civil modifications',
+        desc: 'Premium flooring solutions and structural modifications handled with precision and durability in mind.',
+        img: 'https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?auto=format&fit=crop&w=1200&q=85',
+        bullets: ['Imported Marble & Tiling', 'Hardwood Flooring', 'Internal Masonry Work']
+    },
+    {
+        num: '07',
+        title: 'Painting, finishes & textures',
+        desc: 'The final layer of perfection using premium paints and artisanal textures to bring your walls to life.',
+        img: '/service-painting.png',
+        bullets: ['Luxury Paint Finishes', 'Artisanal Wall Textures', 'Meticulous Preparation']
+    },
+    {
+        num: '08',
+        title: 'Material sourcing & quality checks',
+        desc: 'Curating the finest materials and conducting rigorous quality assessments at every stage of procurement.',
+        img: '/service-material.png',
+        bullets: ['Global Vendor Sourcing', 'Strict Quality Metrics', 'Sustainability Focus']
+    },
+    {
+        num: '09',
+        title: 'Complete project execution & handover',
+        desc: 'Absolute peace of mind with our end-to-end turnkey project management from site prep to final handover.',
         img: 'https://images.unsplash.com/photo-1600607686527-6fb886090705?auto=format&fit=crop&w=1200&q=85',
-        bullets: ['Architecture & Civil', 'Project Management', 'Final Styling & Handover']
+        bullets: ['Dedicated Project Managers', 'On-Time Delivery', 'Post-Handover Support']
     },
 ]
 

@@ -27,7 +27,7 @@ function Reveal({ children, direction = 'up', delay = 0, style = {} }) {
 
 
 
-const FILTERS = ['All', 'Residential', 'Luxury']
+const FILTERS = ['All', 'Residential']
 
 const s = {
     page: { background: '#050505', minHeight: '100vh', fontFamily: "'Inter', sans-serif", color: '#FAF9F6', paddingTop: '72px' },

@@ -1,6 +1,9 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react'
 import { Link, Outlet, NavLink } from 'react-router-dom'
+import { Phone, Menu, X } from 'lucide-react'
 import { PROJECTS } from './data/projects'
+import QuotePopup from './components/QuotePopup'
+// Preloader is now handled by index.html (pure HTML/CSS/JS)
 
 // ── Scroll Reveal Hook ──────────────────────────────────────────────────────
 function useScrollReveal(options = {}) {
@@ -155,6 +158,9 @@ const styles = {
   /* WhatsApp Float */
   waFloat: { position: 'fixed', bottom: '32px', right: '32px', width: '56px', height: '56px', background: '#25D366', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 999, boxShadow: '0 8px 32px rgba(37,211,102,0.4)', textDecoration: 'none', transition: 'transform 0.3s' },
 
+  /* Phone Float */
+  phoneFloat: { position: 'fixed', bottom: '104px', right: '32px', width: '56px', height: '56px', background: '#D4AF37', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 999, boxShadow: '0 8px 32px rgba(212,175,55,0.4)', textDecoration: 'none', transition: 'transform 0.3s', color: '#000' },
+
   /* Stats Bar */
   statsBar: { background: '#0a0a0a', borderTop: '1px solid rgba(255,255,255,0.05)', borderBottom: '1px solid rgba(255,255,255,0.05)', padding: '60px 40px', backgroundImage: 'linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)', backgroundSize: '60px 60px' },
   statsGrid: { maxWidth: '1280px', margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1px', background: 'rgba(255,255,255,0.06)' },
@@ -182,16 +188,16 @@ const styles = {
 }
 
 const HERO_SLIDES = [
-  { img: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1800&q=95', label: 'Living Space' },
-  { img: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&w=1800&q=95', label: 'Master Bedroom' },
-  { img: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=1800&q=95', label: 'Culinary Haven' },
-  { img: 'https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?auto=format&fit=crop&w=1800&q=95', label: 'Dining Room' },
-  { img: 'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?auto=format&fit=crop&w=1800&q=95', label: 'Luxury Bath' },
-  { img: 'https://images.unsplash.com/photo-1567538096621-38d2284b23ff?auto=format&fit=crop&w=1800&q=95', label: 'Modern Living' },
-  { img: 'https://images.unsplash.com/photo-1600121848594-d8644e57abcd?auto=format&fit=crop&w=1800&q=95', label: 'Luxury Suite' },
-  { img: 'https://images.unsplash.com/photo-1484154218769-2f27ca70aed0?auto=format&fit=crop&w=1800&q=95', label: 'Designer Kitchen' },
-  { img: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=1800&q=95', label: 'Urban Living' },
-  { img: 'https://images.unsplash.com/photo-1560448204-603b3fc33ddc?auto=format&fit=crop&w=1800&q=95', label: 'Modern Bedroom' },
+  { img: '/home-page-1.jpg', label: 'Living Space' },
+  { img: '/home-page-2.jpg', label: 'Master Bedroom' },
+  { img: '/home-page-3.jpg', label: 'Culinary Haven' },
+  { img: '/home-page-4.jpg', label: 'Dining Room' },
+  { img: '/home-page-5.jpg', label: 'Luxury Bath' },
+  { img: '/home-page-6.jpg', label: 'Modern Living' },
+  { img: '/home-page-7.jpg', label: 'Luxury Suite' },
+  { img: '/home-page-8.jpg', label: 'Designer Kitchen' },
+  { img: '/home-page-9.jpg', label: 'Urban Living' },
+  { img: '/home-page-10.jpg', label: 'Modern Bedroom' },
 ]
 
 const STATS = [
@@ -253,9 +259,9 @@ const TEAM_MEMBERS = [
 ]
 
 const SERVICES = [
-  { num: '01', title: 'Living Spaces', desc: 'Premium lounges, family rooms, and foyer designs crafted to mirror your lifestyle.', img: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=800&q=85' },
-  { num: '02', title: 'Culinary Havens', desc: 'High-end modular kitchens where ergonomics meet sleek, timeless aesthetics.', img: 'https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=800&q=85' },
-  { num: '03', title: 'Private Retreats', desc: 'Luxury master suites, kids\' bedrooms, and bespoke walk-in wardrobes.', img: 'https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=800&q=85' },
+  { num: '01', title: 'Space planning & interior design', desc: 'Optimizing spatial flow and aesthetic harmony to create functional residential environments.', img: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=800&q=85' },
+  { num: '02', title: 'Modular kitchen & wardrobe solutions', desc: 'High-end modular systems that combine ergonomic efficiency with sleek design.', img: 'https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=800&q=85' },
+  { num: '03', title: 'Custom furniture & carpentry work', desc: 'Bespoke furniture pieces handcrafted to your exact specifications and needs.', img: 'https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=800&q=85' },
 ]
 
 
@@ -269,17 +275,35 @@ const STEPS = [
   {
     num: '02', title: 'Concept',
     desc: 'Develop a theme, color palette, and material selection to set the design tone.',
-    img: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=900&q=85',
+    images: [
+      '/ritam-axis-our-process-1.png',
+      '/ritam-axis-our-process-2.png',
+      '/ritam-axis-our-process-3.png',
+      '/ritam-axis-our-process-4.png'
+    ],
   },
   {
     num: '03', title: 'Design',
     desc: 'Create layouts, 3D renders, and detailed drawings to visualize the space.',
-    img: 'https://images.unsplash.com/photo-1536376072261-38c75010e6c9?auto=format&fit=crop&w=900&q=85',
+    images: [
+      '/design-section-1.png',
+      '/design-section-2.png',
+      '/design-section-3.png',
+      '/design-section-4.png',
+      '/design-section-5.png',
+      '/design-section-6.png',
+      '/design-section-7.png',
+      '/design-section-8.png'
+    ],
   },
   {
     num: '04', title: 'Execution',
     desc: 'Oversee installation, coordinate vendors, and add final styling touches for a complete look.',
-    img: 'https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?auto=format&fit=crop&w=900&q=85',
+    images: [
+      'https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?auto=format&fit=crop&w=900&q=85',
+      'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=900&q=85',
+      'https://images.unsplash.com/photo-1560448204-603b3fc33ddc?auto=format&fit=crop&w=900&q=85'
+    ],
   },
 ]
 
@@ -640,8 +664,64 @@ function NavItem({ to, label, end }) {
   )
 }
 
+function InlineSlider({ images }) {
+  const [current, setCurrent] = useState(0)
+  const [paused, setPaused] = useState(false)
+  const count = images.length
+
+  useEffect(() => {
+    if (paused) return
+    const timer = setInterval(() => {
+      setCurrent(c => (c + 1) % count)
+    }, 4000)
+    return () => clearInterval(timer)
+  }, [paused, count])
+
+  return (
+    <div 
+      style={{ position: 'relative', width: '100%', height: '100%', overflow: 'hidden', cursor: 'pointer' }}
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+    >
+      <div style={{
+        display: 'flex', width: '100%', height: '100%',
+        transform: `translateX(-${current * 100}%)`, transition: 'transform 0.7s cubic-bezier(0.22, 1, 0.36, 1)',
+      }}>
+        {images.map((url, i) => (
+          <img key={i} src={url} alt={`Slide ${i}`} style={{ width: '100%', height: '100%', flexShrink: 0, objectFit: 'cover', display: 'block' }} />
+        ))}
+      </div>
+      <div style={{ position: 'absolute', bottom: '20px', left: '0', right: '0', display: 'flex', justifyContent: 'center', gap: '10px', zIndex: 10 }}>
+        {images.map((_, i) => (
+          <button key={i} onClick={(e) => { e.preventDefault(); e.stopPropagation(); setCurrent(i) }} aria-label={`Go to slide ${i}`} style={{
+            width: current === i ? '24px' : '8px', height: '8px', borderRadius: '4px', border: 'none', padding: 0, cursor: 'pointer',
+            background: current === i ? '#D4AF37' : 'rgba(255,255,255,0.4)', transition: 'all 0.4s ease'
+          }} />
+        ))}
+      </div>
+    </div>
+  )
+}
+
 export default function App() {
   const [scrolled, setScrolled] = useState(false)
+  const [isQuoteOpen, setIsQuoteOpen] = useState(false)
+  const [isAppReady, setIsAppReady] = useState(false)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 768)
+    handleResize()
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
+
+  useEffect(() => {
+    // Match the HTML preloader timing: 5s animation + 0.5s pause before fade
+    const timer = setTimeout(() => setIsAppReady(true), 5500)
+    return () => clearTimeout(timer)
+  }, [])
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > window.innerHeight * 0.85)
@@ -651,7 +731,7 @@ export default function App() {
   }, [])
 
   return (
-    <div style={styles.app}>
+    <div style={styles.app} className={`app-content ${isAppReady ? 'ready' : ''}`}>
       {/* — NAV — */}
       <nav style={{
         ...styles.nav,
@@ -662,10 +742,11 @@ export default function App() {
         transition: 'background 0.5s ease, backdrop-filter 0.5s ease',
       }}>
         <div style={styles.navInner}>
-          <Link to="/" style={styles.logo}>
-            <img src="/logo.png" alt="Ritam Axis" style={{ height: '64px', width: 'auto' }} />
+          <Link to="/" style={{ ...styles.logo, flexDirection: 'column', alignItems: 'center', gap: '4px' }}>
+            <div style={{ fontSize: '24px', fontFamily: "'Playfair Display', serif", fontWeight: 700, color: '#fff', lineHeight: 1, letterSpacing: '2px', textAlign: 'center' }}>RITAM AXIS</div>
+            <div style={{ fontSize: '7.5px', fontFamily: "'Inter', sans-serif", color: '#D4AF37', letterSpacing: '3px', textTransform: 'uppercase', textAlign: 'center' }}>Interior Design Studio</div>
           </Link>
-          <ul style={styles.navLinks}>
+          <ul style={{ ...styles.navLinks, ...(isMobile ? { display: 'none' } : {}) }}>
             {[
               { label: 'Home', to: '/', end: true },
               { label: 'About', to: '/about' },
@@ -679,12 +760,49 @@ export default function App() {
               </li>
             ))}
           </ul>
-          <Link to="/contact" style={{ ...styles.navCta, textDecoration: 'none', display: 'inline-block' }}
-            onMouseEnter={e => { e.currentTarget.style.background = '#D4AF37'; e.currentTarget.style.color = '#000' }}
-            onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#D4AF37' }}>
-            Free Quote
-          </Link>
+          
+          {!isMobile && (
+            <button onClick={() => setIsQuoteOpen(true)} style={{ ...styles.navCta, textDecoration: 'none', display: 'inline-block' }}
+              onMouseEnter={e => { e.currentTarget.style.background = '#D4AF37'; e.currentTarget.style.color = '#000' }}
+              onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#D4AF37' }}>
+              Free Quote
+            </button>
+          )}
+
+          {isMobile && (
+            <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} aria-label="Toggle mobile menu" style={{ background: 'transparent', border: 'none', color: '#fff', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+            </button>
+          )}
         </div>
+        
+        {/* MOBILE MENU OVERLAY */}
+        {isMobile && isMobileMenuOpen && (
+          <div style={{
+            position: 'absolute', top: '72px', left: 0, right: 0, height: 'calc(100vh - 72px)',
+            background: 'rgba(5,5,5,0.98)', backdropFilter: 'blur(10px)', zIndex: 99,
+            display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start',
+            paddingTop: '60px', gap: '32px', borderTop: '1px solid rgba(255,255,255,0.1)'
+          }}>
+            {[
+              { label: 'Home', to: '/', end: true },
+              { label: 'About', to: '/about' },
+              { label: 'Services', to: '/services' },
+              { label: 'Portfolio', to: '/portfolio' },
+              { label: 'Blog', to: '/blog' },
+              { label: 'Contact', to: '/contact' },
+            ].map(({ label, to, end }) => (
+              <div key={label} onClick={() => setIsMobileMenuOpen(false)}>
+                <NavItem to={to} label={label} end={end} />
+              </div>
+            ))}
+            <button onClick={() => { setIsMobileMenuOpen(false); setIsQuoteOpen(true); }} style={{ ...styles.navCta, textDecoration: 'none', display: 'inline-block', marginTop: '20px' }}
+              onMouseEnter={e => { e.currentTarget.style.background = '#D4AF37'; e.currentTarget.style.color = '#000' }}
+              onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#D4AF37' }}>
+              Free Quote
+            </button>
+          </div>
+        )}
       </nav>
 
       <Outlet />
@@ -710,7 +828,7 @@ export default function App() {
               <h4 style={styles.footerH4}>Studio</h4>
               <ul style={styles.footerContact}>
                 <li style={styles.footerContactItem}><span style={{ color: '#D4AF37' }}>📍</span> Madhapur, Hyderabad, Telangana — 500081</li>
-                <li style={styles.footerContactItem}><span style={{ color: '#D4AF37' }}>📞</span> +91 98765 43210</li>
+                <li style={styles.footerContactItem}><span style={{ color: '#D4AF37' }}>📞</span> <a href="tel:+919876543210" style={{ color: 'inherit', textDecoration: 'none' }}>+91 98765 43210</a></li>
                 <li style={styles.footerContactItem}><span style={{ color: '#D4AF37' }}>✉</span> studio@ritamaxis.com</li>
               </ul>
             </div>
@@ -733,12 +851,32 @@ export default function App() {
         </div>
       </footer>
 
+      {/* — FLOATING CALL — */}
+      <a href="tel:+919876543210" style={styles.phoneFloat}
+        onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.12)'}
+        onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}>
+        <Phone size={24} />
+      </a>
+
       {/* — FLOATING WHATSAPP — */}
       <a href="https://wa.me/919876543210" target="_blank" rel="noopener noreferrer" style={styles.waFloat}
         onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.12)'}
         onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}>
         <svg width="26" height="26" fill="white" viewBox="0 0 16 16"><path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z" /></svg>
       </a>
+
+      <QuotePopup isOpen={isQuoteOpen} onClose={() => setIsQuoteOpen(false)} />
+
+
+      <style>{`
+        .app-content {
+          opacity: 0;
+          transition: opacity 1.2s ease-in-out;
+        }
+        .app-content.ready {
+          opacity: 1;
+        }
+      `}</style>
     </div>
   )
 }
@@ -946,16 +1084,20 @@ export function Home() {
                     aspectRatio: '4/3',
                     minHeight: '320px',
                   }}>
-                    <img
-                      src={step.img} alt={step.title}
-                      style={{
-                        width: '100%', height: '100%',
-                        objectFit: 'cover', display: 'block',
-                        transition: 'transform 0.7s ease',
-                      }}
-                      onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.05)'}
-                      onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}
-                    />
+                    {step.images ? (
+                      <InlineSlider images={step.images} />
+                    ) : (
+                      <img
+                        src={step.img} alt={step.title}
+                        style={{
+                          width: '100%', height: '100%',
+                          objectFit: 'cover', display: 'block',
+                          transition: 'transform 0.7s ease',
+                        }}
+                        onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.05)'}
+                        onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}
+                      />
+                    )}
                   </div>
                 </div>
               </Reveal>

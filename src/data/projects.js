@@ -13,12 +13,16 @@ export const PROJECTS = [
             'https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4'
         ],
         gallery: [
-            'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80',
-            'https://images.unsplash.com/photo-1600607687931-cece5ce21418?auto=format&fit=crop&w=800&q=80',
-            'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=800&q=80',
-            'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=800&q=80',
-            'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=80',
-            'https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=800&q=80'
+            '/Antharam-1.jpg',
+            '/Antharam-2.jpg',
+            '/Antharam-3.jpg',
+            '/Antharam-4.jpg',
+            '/Antharam-5.jpg',
+            '/Antharam-6.jpg',
+            '/Antharam-7.jpg',
+            '/Antharam-8.jpg',
+            '/Antharam-9.jpg',
+            '/Antharam-10.jpg'
         ]
     },
     {
@@ -27,7 +31,7 @@ export const PROJECTS = [
         title: 'Organo Damaragidda',
         cat: 'Living & Culinary',
         tag: 'Residential',
-        img: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=900&q=85',
+        img: '/damaragidda-1.webp',
         h: 460,
         desc: 'Focused on creating a stunning heart of the home, this project features a high-end modular kitchen and an integrated living and dining space designed for seamless entertaining.',
         videos: [
@@ -35,12 +39,17 @@ export const PROJECTS = [
             'https://www.w3schools.com/html/mov_bbb.mp4'
         ],
         gallery: [
-            'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=80',
-            'https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=800&q=80',
-            'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=800&q=80',
-            'https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=800&q=80',
-            'https://images.unsplash.com/photo-1540518614846-7eded433c457?auto=format&fit=crop&w=800&q=80',
-            'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80'
+            '/damaragidda-1.webp',
+            '/damaragidda-2.webp',
+            '/damaragidda-3.webp',
+            '/damaragidda-4.webp',
+            '/damaragidda-5.webp',
+            '/damaragidda-6.webp',
+            '/damaragidda-7.webp',
+            '/damaragidda-8.webp',
+            '/damaragidda-9.webp',
+            '/damaragidda-10.webp',
+            '/damaragidda-11.webp'
         ]
     },
     {
@@ -56,12 +65,16 @@ export const PROJECTS = [
             'https://www.w3schools.com/html/mov_bbb.mp4'
         ],
         gallery: [
-            'https://images.unsplash.com/photo-1540518614846-7eded433c457?auto=format&fit=crop&w=800&q=80',
-            'https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=800&q=80',
-            'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=800&q=80',
-            'https://images.unsplash.com/photo-1600607687931-cece5ce21418?auto=format&fit=crop&w=800&q=80',
-            'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=800&q=80',
-            'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=80'
+            '/Depalle-1.webp',
+            '/Depalle-2.webp',
+            '/Depalle-3.webp',
+            '/Depalle-4.webp',
+            '/Depalle-5.webp',
+            '/Depalle-6.webp',
+            '/Depalle-7.webp',
+            '/Depalle-8.webp',
+            '/Depalle-9.webp',
+            '/Depalle-10.webp'
         ]
     },
     {
@@ -70,63 +83,23 @@ export const PROJECTS = [
         title: 'Organo Kandawada',
         cat: 'Living Space',
         tag: 'Residential',
-        img: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=900&q=85',
+        img: '/Kandawada-1.webp',
         h: 320,
         desc: 'A full villa renovation balancing modern architecture with warm, earthy interiors. The space relies heavily on natural light, wood accents, and custom furniture procurement.',
         videos: [
             'https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4'
         ],
         gallery: [
-            'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80',
-            'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=800&q=80',
-            'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=800&q=80',
-            'https://images.unsplash.com/photo-1600607687931-cece5ce21418?auto=format&fit=crop&w=800&q=80',
-            'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=80',
-            'https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=800&q=80'
-        ]
-    },
-    {
-        id: 5,
-        slug: 'banjara-hills-penthouse',
-        title: 'Banjara Hills Penthouse',
-        cat: 'Premium Interior',
-        tag: 'Luxury',
-        img: 'https://images.unsplash.com/photo-1600607686527-6fb886090705?auto=format&fit=crop&w=900&q=85',
-        h: 320,
-        desc: 'A breathtaking penthouse project in the heart of the city featuring panoramic views, imported marble flooring, and smart-home automation throughout the expansive living areas.',
-        videos: [
-            'https://www.w3schools.com/html/mov_bbb.mp4',
-            'https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4'
-        ],
-        gallery: [
-            'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=80',
-            'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=800&q=80',
-            'https://images.unsplash.com/photo-1540518614846-7eded433c457?auto=format&fit=crop&w=800&q=80',
-            'https://images.unsplash.com/photo-1600607687931-cece5ce21418?auto=format&fit=crop&w=800&q=80',
-            'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80',
-            'https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=800&q=80'
-        ]
-    },
-    {
-        id: 6,
-        slug: 'jubilee-residence',
-        title: 'Jubilee Residence',
-        cat: 'Turnkey Design',
-        tag: 'Luxury',
-        img: 'https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=900&q=85',
-        h: 460,
-        desc: 'Bespoke luxury defined. From custom millwork to exclusively sourced lighting fixtures, this turnkey residential project is a testament to uncompromised detail and high-end living.',
-        videos: [
-            'https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4',
-            'https://www.w3schools.com/html/mov_bbb.mp4'
-        ],
-        gallery: [
-            'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=800&q=80',
-            'https://images.unsplash.com/photo-1600607687931-cece5ce21418?auto=format&fit=crop&w=800&q=80',
-            'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=80',
-            'https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=800&q=80',
-            'https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=800&q=80',
-            'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80'
+            '/Kandawada-1.webp',
+            '/Kandawada-2.webp',
+            '/Kandawada-3.webp',
+            '/Kandawada-4.webp',
+            '/Kandawada-5.webp',
+            '/Kandawada-6.webp',
+            '/Kandawada-7.webp',
+            '/Kandawada-8.webp',
+            '/Kandawada-9.webp',
+            '/Kandawada-10.webp'
         ]
     }
 ]
