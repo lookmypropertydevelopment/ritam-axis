@@ -45,7 +45,7 @@ function Reveal({ children, delay = 0, direction = 'up', style = {} }) {
       style={{
         opacity: visible ? 1 : 0,
         transform: getTransform(),
-        transition: `opacity 1.4s ease ${delay}ms, transform 1.4s cubic-bezier(0.22,1,0.36,1) ${delay}ms`,
+        transition: `opacity 0.8s ease ${delay}ms, transform 0.8s cubic-bezier(0.22,1,0.36,1) ${delay}ms`,
         ...style,
       }}
     >
@@ -61,7 +61,7 @@ const styles = {
 
   /* Nav */
   nav: { position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100, background: 'rgba(5,5,5,0.92)', backdropFilter: 'blur(20px)', borderBottom: '1px solid rgba(255,255,255,0.06)' },
-  navInner: { maxWidth: '1280px', margin: '0 auto', padding: '0 40px', height: '72px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' },
+  navInner: { maxWidth: '1280px', margin: '0 auto', padding: '0 40px', minHeight: '90px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' },
   logo: { display: 'flex', alignItems: 'center', gap: '12px', textDecoration: 'none' },
   logoR: { fontSize: '28px', fontFamily: "'Playfair Display', serif", fontWeight: 700, color: '#fff', lineHeight: 1 },
   logoDot: { width: '8px', height: '8px', background: '#D4AF37', borderRadius: '50%', marginBottom: '-4px' },
@@ -567,7 +567,7 @@ function HeroSlider() {
     // CSS-only effects
     const cssAnims = {
       zoom: 'heroZoomIn    1.3s cubic-bezier(.22,1,.36,1) both',
-      blurFade: 'heroBlurFade  1.4s cubic-bezier(.22,1,.36,1) both',
+      blurFade: 'heroBlurFade  0.8s cubic-bezier(.22,1,.36,1) both',
       circleReveal: 'heroCircle    1.2s cubic-bezier(.22,1,.36,1) both',
       pixelate: 'heroPixelate  1.5s cubic-bezier(.22,1,.36,1) both',
     }
@@ -678,7 +678,7 @@ function InlineSlider({ images }) {
   }, [paused, count])
 
   return (
-    <div 
+    <div
       style={{ position: 'relative', width: '100%', height: '100%', overflow: 'hidden', cursor: 'pointer' }}
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
@@ -743,8 +743,7 @@ export default function App() {
       }}>
         <div style={styles.navInner}>
           <Link to="/" style={{ ...styles.logo, flexDirection: 'column', alignItems: 'center', gap: '4px' }}>
-            <div style={{ fontSize: '24px', fontFamily: "'Playfair Display', serif", fontWeight: 700, color: '#fff', lineHeight: 1, letterSpacing: '2px', textAlign: 'center' }}>RITAM AXIS</div>
-            <div style={{ fontSize: '7.5px', fontFamily: "'Inter', sans-serif", color: '#D4AF37', letterSpacing: '3px', textTransform: 'uppercase', textAlign: 'center' }}>Interior Design Studio</div>
+            <img src="/new-logo.png" alt="Ritam Axis Logo" style={{ width: '240px', height: 'auto', maxHeight: '85px', objectFit: 'contain' }} />
           </Link>
           <ul style={{ ...styles.navLinks, ...(isMobile ? { display: 'none' } : {}) }}>
             {[
@@ -760,7 +759,7 @@ export default function App() {
               </li>
             ))}
           </ul>
-          
+
           {!isMobile && (
             <button onClick={() => setIsQuoteOpen(true)} style={{ ...styles.navCta, textDecoration: 'none', display: 'inline-block' }}
               onMouseEnter={e => { e.currentTarget.style.background = '#D4AF37'; e.currentTarget.style.color = '#000' }}
@@ -775,7 +774,7 @@ export default function App() {
             </button>
           )}
         </div>
-        
+
         {/* MOBILE MENU OVERLAY */}
         {isMobile && isMobileMenuOpen && (
           <div style={{
@@ -812,7 +811,7 @@ export default function App() {
         <Reveal direction="left" delay={0}>
           <div style={styles.footerGrid}>
             <div>
-              <span style={styles.footerBrand}>Ritam Axis</span>
+              <img src="/new-logo.png" alt="Ritam Axis Logo" style={{ width: '200px', height: 'auto', maxHeight: '104px', objectFit: 'contain', marginBottom: '20px', display: 'block' }} />
               <p style={styles.footerP}>Designing the soul of your home through architectural minimalism and supreme functionality. Hyderabad's premier luxury interior studio.</p>
               <div style={styles.footerSocials}>
                 {['In', 'Ig', 'Fb'].map(s => (

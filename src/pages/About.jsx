@@ -15,26 +15,30 @@ function useReveal() {
 
 function Reveal({ children, direction = 'up', delay = 0, style = {} }) {
     const [ref, visible] = useReveal()
-    const t = { up: visible ? 'translateY(0)' : 'translateY(48px)', left: visible ? 'translateX(0)' : 'translateX(-48px)', right: visible ? 'translateX(0)' : 'translateX(48px)' }
+    const t = {
+        up: visible ? 'translateY(0)' : 'translateY(48px)',
+        left: visible ? 'translateX(0)' : 'translateX(-48px)',
+        right: visible ? 'translateX(0)' : 'translateX(48px)'
+    }
     return (
-        <div ref={ref} style={{ opacity: visible ? 1 : 0, transform: t[direction], transition: `opacity 1.4s ease ${delay}ms, transform 1.4s cubic-bezier(0.22,1,0.36,1) ${delay}ms`, ...style }}>
+        <div ref={ref} style={{ opacity: visible ? 1 : 0, transform: t[direction], transition: `opacity 0.8s ease ${delay}ms, transform 0.8s cubic-bezier(0.22,1,0.36,1) ${delay}ms`, ...style }}>
             {children}
         </div>
     )
 }
 
 const PROCESS = [
-    { num: '01', title: 'Discovery & Agreement', desc: 'We listen to your lifestyle and expectations. Work begins only after a transparent agreement and alignment, so there are no surprises.' },
-    { num: '02', title: 'Concept Development', desc: 'Mood boards, layouts, and design directions created around your culture, taste, and vision.' },
-    { num: '03', title: 'Design Finalization', desc: 'Detailed drawings, material choices, and schedules prepared for flawless execution.' },
-    { num: '04', title: 'Execution & Manufacturing', desc: 'Precision craftsmanship, premium materials, and strict site supervision ensure top-class quality.' },
-    { num: '05', title: 'Styling & Handover', desc: 'Final styling, finishing touches, and checks to make your home feel truly complete.' },
+    { num: '01', title: 'Discover & Understand', desc: 'Understand house owners\u2019 lifestyle, preferences, budget, and spatial needs.' },
+    { num: '02', title: 'Concept & Mood Board', desc: 'Develop a mood board that sets the theme, colour palette, and material choice to set the design tone.' },
+    { num: '03', title: 'Design & Visualise', desc: 'Create Furniture Layouts, 3D Renders, and detailed drawings to visualise the space.' },
+    { num: '04', title: 'Execute & Style', desc: 'Oversee installation, execution and add final styling touches for complete look.' },
 ]
 
-const WHY_US = [
-    { title: 'Personalization', desc: 'We don’t just do your interiors. We bring Vibes into your homes. Personalized interiors that is thoughtfully planned and mindfully executed. Interior design, for us, is not a transaction. It is a commitment.' },
-    { title: 'Trust and Transparency', desc: 'Transparent communication, and delivering what we promise. Our process is collaborative, professional, and designed to inspire confidence.' },
-    { title: 'Stress Free Experience', desc: 'With Ritam Axis, you don’t manage the project — you enjoy the transformation. We take care of the planning, coordination, and execution so you can experience design without stress, delays, or confusion.' },
+const CORE_VALUES = [
+    { title: 'Trustworthy', desc: 'We believe in building lasting relationships with our clients through transparency and reliability.' },
+    { title: 'Customer Centric', desc: 'Structure, alignment, and execution with customer preferences in mind.' },
+    { title: 'Precision in Every Detail', desc: 'Attention to detail all through design, build, execution, and handover.' },
+    { title: 'Discipline in Execution', desc: 'Make right commitments, right communication, and responsible execution with core values in mind.' },
 ]
 
 const s = {
@@ -49,66 +53,199 @@ const s = {
     label: { fontSize: '11px', letterSpacing: '4px', color: '#D4AF37', textTransform: 'uppercase', marginBottom: '16px' },
     h2: { fontFamily: "'Playfair Display', serif", fontSize: 'clamp(32px,4vw,52px)', fontWeight: 400, color: '#fff', margin: '0 0 48px' },
     divider: { borderTop: '1px solid rgba(255,255,255,0.05)' },
+    gridPattern: { backgroundImage: 'linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)', backgroundSize: '60px 60px' },
     storyGrid: { display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '80px', alignItems: 'center' },
     storyImg: { width: '100%', height: '500px', objectFit: 'cover', filter: 'grayscale(60%)' },
     storyP: { color: 'rgba(255,255,255,0.55)', fontSize: '15px', lineHeight: 1.9, fontWeight: 300, marginBottom: '20px' },
+    vmGrid: { display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '40px' },
+    vmCard: { background: '#0a0a0a', border: '1px solid rgba(255,255,255,0.06)', padding: '48px 44px' },
+    vmLabel: { fontSize: '10px', letterSpacing: '4px', color: '#D4AF37', textTransform: 'uppercase', marginBottom: '20px', display: 'block' },
+    vmH3: { fontFamily: "'Playfair Display', serif", fontSize: '28px', color: '#fff', fontWeight: 400, marginBottom: '24px' },
+    vmP: { color: 'rgba(255,255,255,0.45)', fontSize: '15px', lineHeight: 1.85, fontWeight: 300, margin: 0 },
+    valuesGrid: { display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '32px', marginTop: '48px' },
+    valueCard: { background: '#060606', padding: '48px 40px', borderLeft: '2px solid rgba(212,175,55,0.15)', position: 'relative', overflow: 'hidden', transition: 'all 0.5s', cursor: 'default' },
+    valueNum: { position: 'absolute', right: '10px', bottom: '-20px', fontSize: '140px', fontFamily: "'Playfair Display', serif", color: 'rgba(255,255,255,0.02)', fontWeight: 700, lineHeight: 1, userSelect: 'none' },
+    valueH4: { fontFamily: "'Playfair Display', serif", fontSize: '22px', color: '#fff', marginBottom: '16px', fontWeight: 400, position: 'relative', zIndex: 2 },
+    valueP: { fontSize: '15px', color: 'rgba(255,255,255,0.45)', lineHeight: 1.8, fontWeight: 300, position: 'relative', zIndex: 2, margin: 0 },
     whySplit: { display: 'flex', gap: '80px', alignItems: 'flex-start', flexWrap: 'wrap' },
-    whyLeft: { flex: '1 1 300px', position: 'sticky', top: '120px' },
-    whyRight: { flex: '2 1 500px', display: 'flex', flexDirection: 'column', gap: '32px' },
-    whyItem: { background: '#060606', padding: '56px 48px', borderLeft: '2px solid rgba(212,175,55,0.1)', position: 'relative', overflow: 'hidden', transition: 'all 0.5s', cursor: 'default' },
-    whyNum: { position: 'absolute', right: '10px', bottom: '-20px', fontSize: '180px', fontFamily: "'Playfair Display', serif", color: 'rgba(255,255,255,0.02)', fontWeight: 700, lineHeight: 1, userSelect: 'none', transition: 'all 0.5s' },
-    valueH4: { fontFamily: "'Playfair Display', serif", fontSize: '24px', color: '#fff', marginBottom: '20px', fontWeight: 400, position: 'relative', zIndex: 2 },
-    valueP: { fontSize: '16px', color: 'rgba(255,255,255,0.45)', lineHeight: 1.8, fontWeight: 300, position: 'relative', zIndex: 2 },
+    whyLeft: { flex: '1 1 320px', position: 'sticky', top: '120px' },
+    whyRight: { flex: '2 1 500px' },
     processGrid: { display: 'grid', gridTemplateColumns: '1fr', gap: '32px', marginTop: '48px' },
-    processCard: { display: 'flex', gap: '40px', alignItems: 'flex-start', background: '#0a0a0a', padding: '48px', border: '1px solid rgba(255,255,255,0.05)' },
-    processNum: { fontFamily: "'Playfair Display', serif", fontSize: '48px', color: 'rgba(212,175,55,0.3)', lineHeight: 1, fontWeight: 700 },
+    processCard: { display: 'flex', gap: '40px', alignItems: 'flex-start', background: '#0a0a0a', padding: '48px', border: '1px solid rgba(255,255,255,0.05)', transition: 'border-color 0.4s' },
+    processNum: { fontFamily: "'Playfair Display', serif", fontSize: '48px', color: 'rgba(212,175,55,0.3)', lineHeight: 1, fontWeight: 700, flexShrink: 0 },
     processInfo: { flex: 1 },
     processTitle: { fontFamily: "'Playfair Display', serif", fontSize: '24px', color: '#fff', marginBottom: '16px', fontWeight: 400 },
-    processDesc: { fontSize: '15px', color: 'rgba(255,255,255,0.4)', lineHeight: 1.8, fontWeight: 300 },
+    processDesc: { fontSize: '15px', color: 'rgba(255,255,255,0.4)', lineHeight: 1.8, fontWeight: 300, margin: 0 },
 }
 
 export default function About() {
     return (
         <div style={s.page}>
-            {/* HERO */}
+
+            {/* ── HERO ── */}
             <div style={s.hero}>
-                <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1800&q=90" alt="About" style={s.heroImg} />
+                <img
+                    src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1800&q=90"
+                    alt="About Ritam Axis"
+                    style={s.heroImg}
+                />
                 <div style={s.heroContent}>
                     <span style={s.heroLabel}>✦ &nbsp;Our Story</span>
-                    <h1 style={s.heroH1}>Designing Spaces<br />with <em style={s.heroGold}>Purpose</em></h1>
+                    <h1 style={s.heroH1}>
+                        Designing Spaces<br />
+                        with <em style={s.heroGold}>Precision</em>
+                    </h1>
                 </div>
             </div>
 
-            {/* STORY */}
-            <div style={{ ...s.divider, backgroundImage: 'linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)', backgroundSize: '60px 60px' }}>
+            {/* ── ABOUT US ── */}
+            <div style={{ ...s.divider, ...s.gridPattern }}>
                 <div style={s.section}>
                     <div style={s.storyGrid}>
                         <Reveal direction="left">
-                            <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=900&q=85" alt="Studio" style={s.storyImg} />
+                            <img
+                                src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=900&q=85"
+                                alt="Ritam Axis Studio"
+                                style={s.storyImg}
+                            />
                         </Reveal>
                         <Reveal direction="right" delay={150}>
-                            <p style={s.label}>Ritam Axis</p>
-                            <h2 style={{ ...s.h2, fontSize: 'clamp(36px, 4vw, 56px)' }}>"Amplifies your Vibes"</h2>
-                            <p style={s.storyP}>Vibes define us. They shape our mood, our mindset, and our way of living. Each of us carries a vibe—and home is where it speaks the loudest.</p>
-                            <p style={s.storyP}>Thoughtfully designed interiors don’t just showcase your vibe, they amplify it.</p>
-                            <p style={s.storyP}>At <strong>Ritam Axis</strong>, we blend rooted designs, smart engineering, and creative thinking to help you discover and realize your vibe through our complete turnkey interior solutions.</p>
+                            <p style={s.label}>About Us</p>
+                            <h2 style={{ ...s.h2, fontSize: 'clamp(32px,4vw,50px)' }}>
+                                Clarity to Precision,<br />
+                                <em style={{ fontStyle: 'italic', color: '#D4AF37' }}>Aligned by Design</em>
+                            </h2>
+                            <p style={s.storyP}>
+                                Ritam Axis is a design studio built on the belief that great interiors begin with clarity and end with precision. We create spaces that are thoughtfully aligned with the way you live — balancing aesthetics, functionality, and structure.
+                            </p>
+                            <p style={s.storyP}>
+                                From concept to completion, our process is defined by discipline and detail. Every line, material, and element is carefully considered to deliver interiors that feel seamless, refined, and enduring.
+                            </p>
+                            <p style={s.storyP}>
+                                At <strong style={{ color: '#fff' }}>Ritam Axis</strong>, we do not just design spaces — we align them with purpose and deliver with precision.
+                            </p>
                         </Reveal>
                     </div>
                 </div>
             </div>
 
-            {/* PROCESS */}
-            <div style={{ background: '#030303', ...s.divider, backgroundImage: 'linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)', backgroundSize: '60px 60px' }}>
+            {/* ── VISION & MISSION ── */}
+            <div style={{ background: '#030303', ...s.divider, ...s.gridPattern }}>
+                <div style={s.section}>
+                    <Reveal direction="up">
+                        <p style={s.label}>What Drives Us</p>
+                        <h2 style={{ ...s.h2, marginBottom: '56px' }}>Vision &amp; Mission</h2>
+                    </Reveal>
+                    <div style={s.vmGrid}>
+                        <Reveal direction="left" delay={100}>
+                            <div style={s.vmCard}>
+                                <span style={s.vmLabel}>✦ &nbsp;Vision</span>
+                                <h3 style={s.vmH3}>Structure Meets Soul</h3>
+                                <p style={s.vmP}>
+                                    At Ritam Axis, our vision is rooted in its name. &ldquo;Ritam&rdquo; stands for cosmic order, truth, and the natural rhythm that brings harmony to everything. &ldquo;Axis&rdquo; stands for the central line — the point of balance around which everything is aligned.
+                                </p>
+                                <p style={{ ...s.vmP, marginTop: '20px' }}>
+                                    Together, they define our purpose. We create spaces that are not only beautiful, but perfectly balanced, deeply aligned, and inherently harmonious. We aim to set a new standard in interior design by crafting environments where structure meets soul — spaces that feel intuitive, purposeful, and timeless.
+                                </p>
+                            </div>
+                        </Reveal>
+                        <Reveal direction="right" delay={200}>
+                            <div style={s.vmCard}>
+                                <span style={s.vmLabel}>✦ &nbsp;Mission</span>
+                                <h3 style={s.vmH3}>Harmony. Precision. Purpose.</h3>
+                                <p style={s.vmP}>
+                                    To bring the harmony of Ritam into every space, structured along an Axis of precision and purpose.
+                                </p>
+                                <p style={{ ...s.vmP, marginTop: '20px' }}>
+                                    We design, align, and deliver interiors that are clear, functional, and timeless — crafted with attention to every detail.
+                                </p>
+                            </div>
+                        </Reveal>
+                    </div>
+                </div>
+            </div>
+
+            {/* ── CORE VALUES ── */}
+            <div style={{ ...s.divider, ...s.gridPattern }}>
+                <div style={s.section}>
+                    <Reveal direction="up">
+                        <p style={s.label}>What We Stand For</p>
+                        <h2 style={s.h2}>Core Values</h2>
+                        <p style={{ ...s.storyP, maxWidth: '700px', marginBottom: 0 }}>
+                            Each project at Ritam Axis Design Studio is guided by our core values.
+                        </p>
+                    </Reveal>
+                    <div style={s.valuesGrid}>
+                        {CORE_VALUES.map((v, i) => (
+                            <Reveal key={i} direction="up" delay={i * 100}>
+                                <div
+                                    style={s.valueCard}
+                                    onMouseEnter={e => {
+                                        e.currentTarget.style.borderLeftColor = 'rgba(212,175,55,0.8)'
+                                        e.currentTarget.style.background = '#0a0a0a'
+                                    }}
+                                    onMouseLeave={e => {
+                                        e.currentTarget.style.borderLeftColor = 'rgba(212,175,55,0.15)'
+                                        e.currentTarget.style.background = '#060606'
+                                    }}
+                                >
+                                    <div style={s.valueNum}>0{i + 1}</div>
+                                    <h4 style={s.valueH4}>{v.title}</h4>
+                                    <p style={s.valueP}>{v.desc}</p>
+                                </div>
+                            </Reveal>
+                        ))}
+                    </div>
+                </div>
+            </div>
+
+            {/* ── WHY RITAM AXIS ── */}
+            <div style={{ background: '#030303', ...s.divider, ...s.gridPattern }}>
+                <div style={s.section}>
+                    <div style={s.whySplit}>
+                        <div style={s.whyLeft}>
+                            <Reveal direction="left">
+                                <p style={s.label}>The Difference</p>
+                                <h2 style={s.h2}>Why<br />Ritam Axis</h2>
+                                <p style={s.storyP}>
+                                    Over <strong style={{ color: '#D4AF37' }}>15+ years of Experience</strong>, trusted by many families living in gated, semi gated, and independent communities across Hyderabad and Secunderabad.
+                                </p>
+                                <p style={s.storyP}>
+                                    Great designs are not accidental — it is aligned, precise, and purposeful. We create spaces that are clean, functional, and timeless, delivered through a process you can trust.
+                                </p>
+                            </Reveal>
+                        </div>
+                        <div style={s.whyRight}>
+                            <Reveal direction="right" delay={150}>
+                                <img
+                                    src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=900&q=85"
+                                    alt="Why Ritam Axis"
+                                    style={{ width: '100%', height: '480px', objectFit: 'cover', filter: 'grayscale(50%)' }}
+                                />
+                            </Reveal>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {/* ── THE PROCESS ── */}
+            <div style={{ ...s.divider, ...s.gridPattern }}>
                 <div style={s.section}>
                     <Reveal direction="left">
                         <p style={s.label}>How We Work</p>
-                        <h2 style={s.h2}>Our Process</h2>
-                        <p style={{ ...s.storyP, maxWidth: '800px' }}>We follow a structured process that is trusted and proven. If you value our philosophy and respect our process, we can create the best turnkey interiors for your lifestyle. Our process includes the following five stages.</p>
+                        <h2 style={s.h2}>The Process</h2>
+                        <p style={{ ...s.storyP, maxWidth: '800px' }}>
+                            We follow a structured, disciplined process from the first conversation to the final handover — ensuring nothing is left to chance.
+                        </p>
                     </Reveal>
                     <div style={s.processGrid}>
                         {PROCESS.map((p, i) => (
                             <Reveal key={i} direction="up" delay={i * 100}>
-                                <div style={s.processCard} onMouseEnter={e => e.currentTarget.style.borderColor = 'rgba(212,175,55,0.35)'} onMouseLeave={e => e.currentTarget.style.borderColor = 'rgba(255,255,255,0.05)'}>
+                                <div
+                                    style={s.processCard}
+                                    onMouseEnter={e => e.currentTarget.style.borderColor = 'rgba(212,175,55,0.35)'}
+                                    onMouseLeave={e => e.currentTarget.style.borderColor = 'rgba(255,255,255,0.05)'}
+                                >
                                     <div style={s.processNum}>{p.num}</div>
                                     <div style={s.processInfo}>
                                         <h4 style={s.processTitle}>{p.title}</h4>
@@ -121,43 +258,6 @@ export default function About() {
                 </div>
             </div>
 
-            {/* WHY CHOOSE US - NEW LAYOUT */}
-            <div style={{ ...s.divider, backgroundImage: 'linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)', backgroundSize: '60px 60px' }}>
-                <div style={s.section}>
-                    <div style={s.whySplit}>
-                        <div style={s.whyLeft}>
-                            <Reveal direction="left">
-                                <p style={s.label}>The Difference</p>
-                                <h2 style={s.h2}>Why Choose<br />Ritam Axis</h2>
-                                <p style={s.storyP}>We bring a highly personalized and transparent approach to interior design, ensuring peace of mind from discovery to handover.</p>
-                            </Reveal>
-                        </div>
-                        <div style={s.whyRight}>
-                            {WHY_US.map((w, i) => (
-                                <Reveal key={i} direction="up" delay={i * 150}>
-                                    <div style={s.whyItem}
-                                        onMouseEnter={e => {
-                                            e.currentTarget.style.borderLeftColor = 'rgba(212,175,55,0.8)'
-                                            e.currentTarget.style.background = '#0a0a0a'
-                                            e.currentTarget.querySelector('.why-num').style.color = 'rgba(212,175,55,0.05)'
-                                            e.currentTarget.querySelector('.why-num').style.transform = 'scale(1.05)'
-                                        }}
-                                        onMouseLeave={e => {
-                                            e.currentTarget.style.borderLeftColor = 'rgba(212,175,55,0.1)'
-                                            e.currentTarget.style.background = '#060606'
-                                            e.currentTarget.querySelector('.why-num').style.color = 'rgba(255,255,255,0.02)'
-                                            e.currentTarget.querySelector('.why-num').style.transform = 'scale(1)'
-                                        }}>
-                                        <div className="why-num" style={s.whyNum}>0{i + 1}</div>
-                                        <h4 style={s.valueH4}>{w.title}</h4>
-                                        <p style={s.valueP}>{w.desc}</p>
-                                    </div>
-                                </Reveal>
-                            ))}
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     )
 }

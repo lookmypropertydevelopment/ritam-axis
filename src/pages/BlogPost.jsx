@@ -19,7 +19,7 @@ function Reveal({ children, direction = 'up', delay = 0, style = {} }) {
     const [ref, visible] = useReveal()
     const t = { up: visible ? 'translateY(0)' : 'translateY(48px)', left: visible ? 'translateX(0)' : 'translateX(-48px)', right: visible ? 'translateX(0)' : 'translateX(48px)' }
     return (
-        <div ref={ref} style={{ opacity: visible ? 1 : 0, transform: t[direction], transition: `opacity 1.4s ease ${delay}ms, transform 1.4s cubic-bezier(0.22,1,0.36,1) ${delay}ms`, ...style }}>
+        <div ref={ref} style={{ opacity: visible ? 1 : 0, transform: t[direction], transition: `opacity 0.8s ease ${delay}ms, transform 0.8s cubic-bezier(0.22,1,0.36,1) ${delay}ms`, ...style }}>
             {children}
         </div>
     )

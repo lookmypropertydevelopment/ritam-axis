@@ -2,7 +2,7 @@ export const PROJECTS = [
     {
         id: 1,
         slug: 'organo-antharam',
-        title: 'Organo Antharam',
+        title: 'My Home Avatar',
         cat: 'Turnkey Solution',
         tag: 'Residential',
         img: 'https://images.unsplash.com/photo-1600607686527-6fb886090705?auto=format&fit=crop&w=900&q=85',
@@ -28,7 +28,7 @@ export const PROJECTS = [
     {
         id: 2,
         slug: 'organo-damaragidda',
-        title: 'Organo Damaragidda',
+        title: 'My Home Thridasa',
         cat: 'Living & Culinary',
         tag: 'Residential',
         img: '/damaragidda-1.webp',
@@ -55,7 +55,7 @@ export const PROJECTS = [
     {
         id: 3,
         slug: 'organo-depalle',
-        title: 'Organo Depalle',
+        title: 'Aparna Zicon',
         cat: 'Private Retreat',
         tag: 'Residential',
         img: 'https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=900&q=85',
@@ -80,7 +80,7 @@ export const PROJECTS = [
     {
         id: 4,
         slug: 'organo-kandawada',
-        title: 'Organo Kandawada',
+        title: 'other luxury villa Plots',
         cat: 'Living Space',
         tag: 'Residential',
         img: '/Kandawada-1.webp',
